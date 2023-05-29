@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function ViewUser() {
+  
   const [user, setUser] = useState({
     name: "",
     username: "",
@@ -15,10 +16,10 @@ export default function ViewUser() {
     loadUser();
   }, []);
 
-  const loadUser = async () => {
+  async function loadUser() {
     const result = await axios.get(`http://localhost:8080/user/${id}`);
     setUser(result.data);
-  };
+  }
 
   return (
     <div className="container">
